@@ -1,0 +1,22 @@
+*using iterm
+    -install ohmzsh
+    -using "cypher" theme under ~/.zshrc
+
+*vimrc...
+set number
+syntax on
+colorscheme peachpuff
+set background=dark
+set tabstop=4
+set smartindent
+set expandtab
+set softtabstop=4
+set noswapfile
+set incsearch
+set hlsearch
+set ruler
+set mouse=a
+highlight Comment ctermfg=green
+
+*use homebrew
+    -install gcc, python, jupyter, pip, etc...
