@@ -11,6 +11,6 @@ set noswapfile
 set incsearch
 set hlsearch
 set ruler
-set mouse=a
+set mouse=n
 highlight Constant ctermfg=red guifg=#b64213
 highlight Comment ctermfg=green
