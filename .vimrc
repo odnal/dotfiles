@@ -1,7 +1,6 @@
 set number
 syntax on
 colorscheme peachpuff
-set background=dark
 set tabstop=4
 set smartindent
 set expandtab
@@ -12,5 +11,8 @@ set incsearch
 set hlsearch
 set ruler
 set mouse=n
-highlight Constant ctermfg=red guifg=#b64213
-highlight Comment ctermfg=green
+imap jj <Esc>
+hi Comment ctermfg=green
+hi Macro ctermfg=38 guifg=#00afd7 "rgb=0,175,215
+hi Include ctermfg=169 guifg=#d75faf "rgb=215,95,175
+hi Character ctermfg=169 guifg=#d75faf "rgb=215,95,175
