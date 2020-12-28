@@ -16,3 +16,13 @@ hi Comment ctermfg=green
 hi Macro ctermfg=38 guifg=#00afd7 "rgb=0,175,215
 hi Include ctermfg=169 guifg=#d75faf "rgb=215,95,175
 hi Character ctermfg=169 guifg=#d75faf "rgb=215,95,175
+" Normal action
+set expandtab
+
+if has("autocmd")
+
+    " If the filetype is Makefile then we need to use tabs
+    " So do not expand tabs into space.
+    autocmd FileType make   set noexpandtab
+
+endif
