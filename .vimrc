@@ -1,5 +1,6 @@
 " Install vim-plug https://github.com/junegunn/vim-plug
 " create a plugged directory in .vim
+" XTerm terminal scheme preferred
 call plug#begin()
 
 " Make sure you use single quotes / :PlugInstall to install your plugins
