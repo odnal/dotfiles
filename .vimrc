@@ -1,6 +1,5 @@
 " Install vim-plug https://github.com/junegunn/vim-plug
 " create a plugged directory in .vim
-" XTerm terminal scheme preferred
 call plug#begin()
 
 " Make sure you use single quotes / :PlugInstall to install your plugins
@@ -21,14 +20,25 @@ set incsearch
 set hlsearch
 set ruler
 set mouse=n
+set visualbell
+set t_vb=
+set expandtab
+set signcolumn=no
+
+" Remaps
 imap jj <Esc>
 nnoremap <C-d> <C-d>zz
 nnoremap <C-u> <C-u>zz
-set visualbell
-set t_vb=
+let mapleader=","
+nnoremap <leader>pv :Ex<CR>
+nnoremap <leader>gd :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>yfx :YcmCompleter FixIt<CR>
+nmap <leader>yfw <Plug>(YCMFindSymbolInWorkspace)
+nmap <leader>yfd <Plug>(YCMFindSymbolInDocument)
+
+
 " Normal action
-set expandtab
-set signcolumn=no
 
 if has("autocmd")
 
