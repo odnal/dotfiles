@@ -183,6 +183,11 @@ bar {
         status_command i3status
 }
 
+#  Screenshots in files - apt-get install maim xdotool xclip copyq
+bindsym Print exec --no-startup-id maim --format=png "/home/$USER/Pictures/screenshot-$(date -u +'%Y%m%d-%H%M%SZ')-all.png"
+bindsym $mod+Print exec --no-startup-id maim --format=png --window $(xdotool getactivewindow) "/home/$USER/Pictures/screenshot-$(date -u +'%Y%m%d-%H%M%SZ')-current.png"
+bindsym Shift+Print exec --no-startup-id maim --format=png --select "/home/$USER/Pictures/screenshot-$(date -u +'%Y%m%d-%H%M%SZ')-selected.png"
+
 bindsym --release $mod+Shift+l exec "slock"
 #exec --no-startup-id /usr/libexec/gsd-xsettings
 exec xset r rate 250 30
