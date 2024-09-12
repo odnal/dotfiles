@@ -1,0 +1,21 @@
+Favorite vim commands
+
+<C-o> -- jump back to old previous file in buffer
+<C-i> -- jump back to new previous file in buffer
+
+<C-w>q -- close a buffer
+<C-w>n -- open new empty scratch file in split window
+<C-w>H -- make horizontal splits into vertical splits
+<C-w>J -- make vertical splits into horizontal splits
+<C-w>f -- open up file under the cursor in a new window for editing
+<C-w>i -- does what gd (goto definition) does but splits it in another window
+gf -- open up file under the cursor for editing
+
+gu|U -- i tend to visually select something and upper/lower case it with just U/u
+ga -- char under cursor gives ascii information (i.e  dec, hex, octal
+g_CTRL_G -- visually select and see how many lines, word count, etc.
+
+<leader>ps -- open Sex in current file folder tree
+<leader>s -- i have mapped to :sf which will search for a file name - less clutter than telescope
+
+
