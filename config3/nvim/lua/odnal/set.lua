@@ -22,6 +22,7 @@ vim.opt.cursorline = true
 vim.opt.relativenumber = true
 vim.opt.termguicolors = true
 vim.opt.splitbelow = true
+vim.g.netrw_liststyle=1
 --vim.opt.background = "dark"
 --vim.cmd.ctermbg = none
 --vim.cmd.guibg = none

@@ -1,3 +1,4 @@
+note: change st-256color to xterm-256color for correct cursor color
 Favorite vim commands
 
 <C-o> -- jump back to old previous file in buffer
