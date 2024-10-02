@@ -13,13 +13,12 @@ return require('packer').startup(function(use)
       requires = { {'nvim-lua/plenary.nvim'} }
   }
 
-  --use ({ 
-  --    "ellisonleao/gruvbox.nvim",
-  --    as = 'gruvbox',
-  --    config = function() 
-  --  	  vim.cmd('colorscheme gruvbox')
-  --    end
-  --})
+  use {
+      'stevearc/oil.nvim',
+      config = function()
+          require('oil').setup()
+      end
+  }
 
   use {
       "blazkowolf/gruber-darker.nvim",

@@ -29,6 +29,8 @@ vim.keymap.set('n', '<leader>rr', "<cmd>Recompile<cr>", { desc = "Recompile" })
 vim.keymap.set("n", "<leader>p", with_count("PrevError", 1), { expr = true, desc = "Previous Error" })
 vim.keymap.set("n", "<leader>n", with_count("NextError", 1), { expr = true, desc = "Next Error" })
 
+vim.api.nvim_set_keymap('n', '<leader>o', ':Oil<CR>', { noremap = true, silent = true, desc = "Oil"})
+
 --vim.keymap.set("n", "J", "mzJ`z")
 
 
