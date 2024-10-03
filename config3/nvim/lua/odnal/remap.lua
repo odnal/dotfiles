@@ -16,6 +16,7 @@ vim.keymap.set('v', '<leader>Y', '"+y$', {})
 vim.keymap.set('n', '<space>m', [[:Man ]], {})
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+vim.keymap.set('x', 'y', 'mm"yyp`mj', { noremap = true, silent = true })
 
 local function with_count(cmd, default)
   return function()
