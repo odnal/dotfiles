@@ -183,13 +183,18 @@ bar {
         status_command i3status
 }
 
-#  Screenshots in files - apt-get install maim xdotool xclip copyq
+#bindsym --release $mod+Shift+Print exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
+##  Screenshots in files
 bindsym Print exec --no-startup-id maim --format=png "/home/$USER/Pictures/screenshot-$(date -u +'%Y%m%d-%H%M%SZ')-all.png"
 bindsym $mod+Print exec --no-startup-id maim --format=png --window $(xdotool getactivewindow) "/home/$USER/Pictures/screenshot-$(date -u +'%Y%m%d-%H%M%SZ')-current.png"
 bindsym Shift+Print exec --no-startup-id maim --format=png --select "/home/$USER/Pictures/screenshot-$(date -u +'%Y%m%d-%H%M%SZ')-selected.png"
 
 bindsym --release $mod+Shift+l exec "slock"
 #exec --no-startup-id /usr/libexec/gsd-xsettings
-exec xset r rate 250 30
+# wifu settings below... 
+#exec xset r rate 250 30
+#exec_always feh --bg-scale /home/cara/Downloads/1274305.png
+#exec_always ~/.xinitrc
+
 
 hide_edge_borders both
