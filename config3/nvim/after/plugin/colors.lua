@@ -14,8 +14,11 @@ function ColorMyPencils(color)
     vim.cmd([[hi Normal ctermbg=none guibg=none]])
     vim.cmd([[set signcolumn=no]])
     vim.cmd([[hi CursorLine term=bold cterm=bold guibg=none]])
-    --vim.api.nvim_set_hl(0, "Normal", {ctermbg = "none"})
-    --vim.api.nvim_set_hl(0, "Normal", {guibg = "none"})
+
+    --vim.api.nvim_set_hl(0, "Search", {ctermbg = "none"})
+    vim.api.nvim_set_hl(0, "Search", {fg="#ffffff", bg="#282828"})
+    vim.api.nvim_set_hl(0, "IncSearch", { bg = "white", fg = "black"})
+    --vim.api.nvim_set_hl(0, "IncSearch", {ctermbg = "blue"})
 end
 
 ColorMyPencils()

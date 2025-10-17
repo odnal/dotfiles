@@ -37,14 +37,28 @@ return require('packer').startup(function(use)
       requires = {
           --- Uncomment the two plugins below if you want to manage the language servers from neovim
           {'williamboman/mason.nvim'},
-          {'williamboman/mason-lspconfig.nvim'},
+          {
+              'williamboman/mason-lspconfig.nvim',
+              tag = "v1.8.0"
+          },
           -- LSP Support
-          {'neovim/nvim-lspconfig'},
+          {
+              'neovim/nvim-lspconfig',
+              tag = "v1.7.0"
+          },
           -- Autocompletion
           {'hrsh7th/nvim-cmp'},
           {'hrsh7th/cmp-nvim-lsp'},
+          {'saadparwaiz1/cmp_luasnip'},
           {'L3MON4D3/LuaSnip'},
       }
+  }
+
+  use {
+      'nvim-mini/mini.align',
+      config = function()
+          require('mini.align').setup()
+      end
   }
 
 end)
