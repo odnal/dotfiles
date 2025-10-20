@@ -20,10 +20,12 @@ lsp_zero.set_preferences({
 lsp_zero.on_attach(function(client, bufnr)
   local opts = {buffer = bufnr, remap = false}
 
-  vim.keymap.set("n", "gd", function()
+  vim.keymap.set("n", "gs", function()
       vim.cmd("split")
       vim.lsp.buf.definition()
   end, opts)
+  vim.keymap.set("n", "gd", function()  vim.lsp.buf.definition() end, opts)
+  vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, { noremap = true, silent = true })
   vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
   vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
   vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
@@ -39,7 +41,8 @@ end)
 -- read this: https://github.com/VonHeikemen/lsp-zero.nvim/blob/v3.x/doc/md/guides/integrate-with-mason-nvim.md
 require('mason').setup({})
 require('mason-lspconfig').setup({
-  ensure_installed = {'clangd', 'rust_analyzer', 'jedi_language_server', 'lua_ls'},
+  ensure_installed = {'clangd', 'rust_analyzer', 'jedi_language_server', 'lua_ls', 'quick_lint_js', 'html', 'eslint'},
+  automatic_installation = true,
   handlers = {
     lsp_zero.default_setup,
     lua_ls = function()
@@ -52,6 +55,28 @@ require('mason-lspconfig').setup({
 local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
 
+-- ** logic for auto completion functionality **  --
+local auto_complete_state = true
+
+local function enable_auto_complete()
+    auto_complete_state = true
+    vim.notify("Autocomplete: ON", vim.log.levels.INFO)
+end
+
+local function disable_auto_complete()
+    auto_complete_state = false
+    cmp.abort()
+    vim.notify("Autocomplete: OFF", vim.log.levels.INFO)
+end
+
+local function toggle_auto_complete()
+    if auto_complete_state then
+        disable_auto_complete()
+    else
+        enable_auto_complete()
+    end
+end
+
 -- this is the function that loads the extra snippets to luasnip
 -- from rafamadriz/friendly-snippets
 require('luasnip.loaders.from_vscode').lazy_load()
@@ -61,15 +86,30 @@ cmp.setup({
     {name = 'path'},
     {name = 'nvim_lsp'},
     {name = 'nvim_lua'},
-    {name = 'luasnip', keyword_length = 2},
     {name = 'buffer', keyword_length = 3},
+    {name = 'luasnip', keyword_length = 2},
   },
   formatting = lsp_zero.cmp_format(),
+  --completion = { autocomplete = { cmp.TriggerEvent.TextChanged } }, -- on by default
   mapping = cmp.mapping.preset.insert({
     ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
     ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
     --['<C-y>'] = cmp.mapping.confirm({ select = true }),
     ['<TAB>'] = cmp.mapping.confirm({ select = true }),
-    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<C-e>'] = toggle_auto_complete,
+    ['<C-Space>'] = cmp.mapping(function()
+        if cmp.visible() then
+            cmp.close()
+        else
+            cmp.complete()
+        end
+    end, {'i', 'c'})
   }),
+
+  vim.api.nvim_create_user_command("ToggleAutoComplete", toggle_auto_complete, {}),
+  -- override cmp's internal trigger state
+  enabled = function()
+      return auto_complete_state
+  end,
 })
+

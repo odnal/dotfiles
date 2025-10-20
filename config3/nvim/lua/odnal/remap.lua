@@ -16,21 +16,12 @@ vim.keymap.set('v', '<leader>Y', '"+y$', {})
 vim.keymap.set('n', '<space>m', [[:Man ]], {})
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
-vim.keymap.set('x', 'y', 'mm"yyp`mj', { noremap = true, silent = true })
+--vim.keymap.set('x', 'y', 'mm"yyp`mj', { noremap = true, silent = true })
 
-local function with_count(cmd, default)
-  return function()
-    local default_count = type(default) == "function" and default() or default
-    local count = vim.v.count == 0 and default_count or vim.v.count
-    return "<cmd>" .. count .. cmd .. "<cr>"
-  end
-end
-vim.keymap.set('n', '<leader>cc', "<cmd>Compile<cr>", { desc = "Compile" })
-vim.keymap.set('n', '<leader>rr', "<cmd>Recompile<cr>", { desc = "Recompile" })
-vim.keymap.set("n", "<leader>p", with_count("PrevError", 1), { expr = true, desc = "Previous Error" })
-vim.keymap.set("n", "<leader>n", with_count("NextError", 1), { expr = true, desc = "Next Error" })
+vim.keymap.set('n', '<C-n>', "<cmd>cnext<CR>", {desc = "Quickfix cnext"})
+vim.keymap.set('n', '<C-p>', "<cmd>cprevious<CR>", {desc = "Quickfix cprev"})
 
-vim.api.nvim_set_keymap('n', '<leader>o', ':Oil<CR>', { noremap = true, silent = true, desc = "Oil"})
+
 
 --vim.keymap.set("n", "J", "mzJ`z")
 

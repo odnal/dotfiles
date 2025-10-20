@@ -31,6 +31,8 @@ require("oil").setup({
                 vim.cmd("edit")
             end
         end)
-    end, { desc = "Create file in Oil" })
+    end, { desc = "Create file in Oil" }),
+
+    vim.api.nvim_set_keymap('n', '<leader>o', ':Oil<CR>', { noremap = true, silent = true, desc = "Oil"})
 })
 
